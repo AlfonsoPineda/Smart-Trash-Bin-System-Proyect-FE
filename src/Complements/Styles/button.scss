@@ -1,0 +1,15 @@
+$dark: #1e2244;
+$midDark: #2d386a;
+$midLight: #3b4c90;
+$light: #84c0ea;
+$lightText: #E3DAC9;
+
+.btn-primary{
+  background-color: $midLight;
+  border: none;
+  border-radius: 10px;
+  &:active, &:focus, &:hover{
+    opacity: 0.9;
+    background-color: $midLight;
+  }
+}
