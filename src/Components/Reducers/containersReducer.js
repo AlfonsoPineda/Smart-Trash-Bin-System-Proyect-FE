@@ -4,7 +4,7 @@ const initState = {
     lon: '',
     type: '',
     containers: [
-        { id: '', type: '', lat: '', lon: '', capacity: '' }
+        { id: '', name: '', type: '', lat: '', lon: '', capacity: '', direction: '' }
     ],
 };
 

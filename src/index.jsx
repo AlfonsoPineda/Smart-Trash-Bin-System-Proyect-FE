@@ -24,6 +24,7 @@ import './Complements/Styles/button.scss';
 import Home from './Pages/Home/Home';
 import * as serviceWorker from './serviceWorker';
 import AddContainer from './Pages/Containers/Add/AddContainer';
+import ContainerList from './Pages/Containers/List/ContainerList';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/AddContainer" component={AddContainer} />
+          <Route exact path="/ListContainers" component={ContainerList} />
           <Route component={NotFound} />
         </Switch>
       </Router>

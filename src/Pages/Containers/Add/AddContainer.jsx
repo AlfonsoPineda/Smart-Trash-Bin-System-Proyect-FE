@@ -53,7 +53,7 @@ export default function AddContainer({}){
                 <div className="col-6" style={{ paddingLeft:'2rem' }}>
                   <div className="form__group field">
                       <input type="text" className="form__field" placeholder="contid" name="contid" id="contid" required value={container.id} onChange={handleChange} />
-                      <label htmlFor="contid" className="form__label">ID del contenedor</label>
+                      <label htmlFor="contid" className="form__label">Nombre del contenedor</label>
                     </div>
                 </div>
               </div>
