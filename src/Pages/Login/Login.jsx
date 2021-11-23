@@ -11,7 +11,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div clasName="wrapper container">
+      <div>
         <div className="row d-flex justify-content-center">
           <div className="login-bar">
             <a className="navbar-brand" href="/">

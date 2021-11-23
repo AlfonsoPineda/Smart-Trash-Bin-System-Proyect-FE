@@ -13,7 +13,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <div clasName="wrapper container">
+      <div>
         <NavBar />
         <div className="row d-flex justify-content-center">
           <h1 className="dark-text text-center signup-title bold-text">Registro</h1>

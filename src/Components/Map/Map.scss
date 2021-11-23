@@ -1,0 +1,33 @@
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.search {
+    width: 100%;
+    z-index: 10;
+}
+
+.search input {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.locate {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    z-index: 10;
+}
+
+.locate img {
+    width: 30px;
+    cursor: pointer;
+}
+
+#map * {
+    overflow: visible;
+}

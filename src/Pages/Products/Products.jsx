@@ -11,7 +11,7 @@ class Products extends Component {
 
   render() {
     return (
-      <div clasName="wrapper container">
+      <div className="wrapper container">
         <NavBar />
         <div className="row d-flex  ">
           <div className="col-12" style={{ padding: '1rem' }}>

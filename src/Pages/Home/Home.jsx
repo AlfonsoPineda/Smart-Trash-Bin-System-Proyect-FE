@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import NavBar from '../../Components/Navbar/NavBar';
+import MapComponent from '../../Components/Map/MapComponent';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
     };
   }
 
   render() {
     return (
-      <div clasName="wrapper container">
+      <div>
         <NavBar />
         <div className="row d-flex justify-content-center">
-          <h1>Home Works!</h1>
+          <div className="col-12">
+            <div style={{ height: '100%', width: '100%', padding: '2rem' }}>
+              <h1>Mapa de contenedores</h1>
+              <MapComponent />
+            </div>
+          </div>
         </div>
       </div>
     );

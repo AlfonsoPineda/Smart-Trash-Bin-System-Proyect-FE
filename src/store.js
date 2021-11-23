@@ -1,14 +1,21 @@
 import { createStore, combineReducers } from 'redux';
-import cartReducer from './Components/Reducers/cartReducer';
+import mapReducer from './Components/Reducers/MapReducer';
 import sessionReducer from './Components/Reducers/sessionReducer';
-import itemsReducer from './Components/Reducers/itemsReducer';
+import containersReducer from './Components/Reducers/containersReducer';
+import { loadState, saveState } from './localStorage';
+
+const persistedData = loadState();
 
 // eslint-disable-next-line
 const rootReducer = combineReducers({
-  cartReducer,
-  sessionReducer,
-  itemsReducer,
+    sessionReducer,
+    mapReducer,
+    containersReducer
 });
 
 // eslint-disable-next-line
-export const store = createStore(rootReducer);
+const store = createStore(rootReducer, persistedData);
+store.subscribe(() => {
+    saveState(store.getState());
+});
+export default store;
