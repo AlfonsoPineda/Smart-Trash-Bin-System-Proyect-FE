@@ -1,6 +1,6 @@
 import { Component } from "react";
 import NavBar from "../../../Components/Navbar/NavBar";
-import TableContainers from "../../../Components/TableContainers/TableContainers";
+import TableContainers from "../../../Components/Tables/TableContainers";
 import store from "../../../store";
 
 

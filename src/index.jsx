@@ -25,6 +25,7 @@ import Home from './Pages/Home/Home';
 import * as serviceWorker from './serviceWorker';
 import AddContainer from './Pages/Containers/Add/AddContainer';
 import ContainerList from './Pages/Containers/List/ContainerList';
+import UserList from './Pages/Users/List/UserList';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/home" component={Home} />
           <Route exact path="/AddContainer" component={AddContainer} />
           <Route exact path="/ListContainers" component={ContainerList} />
+          <Route exact path="/ListUsers" component={UserList} />
           <Route component={NotFound} />
         </Switch>
       </Router>
