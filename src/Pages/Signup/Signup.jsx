@@ -22,17 +22,15 @@ class Signup extends Component {
               <h4 className="card-title dark-text">Completa tus datos</h4>
               <form autoComplete="off">
                 <div className="row">
+                  <div className="col-12">
+                    <div className="form__group field">
+                        <input type="email" className="form__field" placeholder="Email" name="email" id="email" required />
+                        <label htmlFor="email" className="form__label">Email</label>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
                   <div className="col-6">
-                    <div className="form__group field">
-                      <input type="text" className="form__field" placeholder="Nombre(s)" name="name" id="name" required />
-                      <label htmlFor="name" className="form__label">Nombre(s)</label>
-                    </div>
-                    <br />
-                    <div className="form__group field">
-                      <input type="tel" className="form__field" placeholder="Telefono" name="phone" id="phone" required />
-                      <label htmlFor="phone" className="form__label">Telefono</label>
-                    </div>
-                    <br />
                     <div className="form__group field">
                       <input type="password" className="form__field" placeholder="Contraseña" name="password" id="password" required />
                       <label htmlFor="password" className="form__label">Contraseña</label>
@@ -42,16 +40,6 @@ class Signup extends Component {
                     <br />
                   </div>
                   <div className="col-6">
-                    <div className="form__group field">
-                      <input type="text" className="form__field" placeholder="Apellido(s)" name="lname" id="lname" required />
-                      <label htmlFor="lname" className="form__label">Apellido(s)</label>
-                    </div>
-                    <br />
-                    <div className="form__group field">
-                      <input type="email" className="form__field" placeholder="Email" name="email" id="email" required />
-                      <label htmlFor="email" className="form__label">Email</label>
-                    </div>
-                    <br />
                     <div className="form__group field">
                       <input type="password" className="form__field" placeholder="Confirmar contraseña" name="password-confirm" id="password-confirm" required />
                       <label htmlFor="password-confirm" className="form__label">Confirmar contraseña</label>

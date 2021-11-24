@@ -2,28 +2,36 @@ $light: #84c0ea;
 $dark: #1e2244;
 $darfDifuminated: #444D9C;
 $lightText: #E3DAC9;
+.card {
+    box-shadow: 0px 2px 5px #6c757d;
+}
 
-.card{
-  box-shadow: 0px 2px 5px #6c757d;
+.card-header {
+    width: 110%;
+    margin-right: -20px;
+    margin-left: -20px;
+    border-radius: 20px;
+    background-color: #e9ecef;
 }
-.card-header{
-  width: 110%;
-  margin-right: -20px;
-  margin-left: -20px;
-  border-radius: 20px;
-  background-color: #e9ecef;
-}
-.card-link{
-  text-decoration: none;
-  color: $dark;
-  &:active, &:focus, &:hover{
-    color: $darfDifuminated;
-  }
-  .dashboard-cards{
-    border-color: $light;
-    border-radius: 10px;
-    .card-header{
-      background-color: $light;
+
+.card-link {
+    text-decoration: none;
+    color: $dark;
+    &:active,
+    &:focus,
+    &:hover {
+        color: $darfDifuminated;
     }
-  }
+    .dashboard-cards {
+        border-color: $light;
+        border-radius: 10px;
+        .card-header {
+            background-color: $light;
+        }
+    }
+}
+
+.radius-card {
+    border-radius: 20px;
+    margin-top: 1rem;
 }
