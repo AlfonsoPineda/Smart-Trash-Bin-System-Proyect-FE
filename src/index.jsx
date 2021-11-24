@@ -26,6 +26,7 @@ import * as serviceWorker from './serviceWorker';
 import AddContainer from './Pages/Containers/Add/AddContainer';
 import ContainerList from './Pages/Containers/List/ContainerList';
 import UserList from './Pages/Users/List/UserList';
+import UserAdd from './Pages/Users/Add/AddUser';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route exact path="/AddContainer" component={AddContainer} />
           <Route exact path="/ListContainers" component={ContainerList} />
           <Route exact path="/ListUsers" component={UserList} />
+          <Route exact path="/AddUser" component={UserAdd} />
           <Route component={NotFound} />
         </Switch>
       </Router>
