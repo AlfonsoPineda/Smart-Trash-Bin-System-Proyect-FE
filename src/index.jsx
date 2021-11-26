@@ -27,6 +27,7 @@ import AddContainer from './Pages/Containers/Add/AddContainer';
 import ContainerList from './Pages/Containers/List/ContainerList';
 import UserList from './Pages/Users/List/UserList';
 import UserAdd from './Pages/Users/Add/AddUser';
+import MapPage from './Pages/Map/Mappage';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/home" component={Home} />
+          <Route exact path="/map" component={MapPage} />
           <Route exact path="/AddContainer" component={AddContainer} />
           <Route exact path="/ListContainers" component={ContainerList} />
           <Route exact path="/ListUsers" component={UserList} />

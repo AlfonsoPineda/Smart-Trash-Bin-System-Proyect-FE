@@ -26,10 +26,13 @@ function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="nav navbar-nav">
             <li className="nav-item">
+              <a className="nav-link" href="/Home">Dashboard</a>
+            </li>
+            <li className="nav-item">
               <div className="dropdown">
                 <a className="nav-dropbtn nav-link">Contenedores</a>
                 <div className="dropdown-content">
-                  <a href="/Home">Mapa</a>
+                  <a href="/map">Mapa</a>
                   <a href="/ListContainers">Lista</a>
                   <a href="/AddContainer">Agregar</a>
                 </div>
