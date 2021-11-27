@@ -41,12 +41,12 @@ export default function AddContainer({}){
                   <div className="select-group">
                     <select aria-label="Default select example" name="type" id="type" value={container.type} onChange={handleTypeChange}>
                       <option defaultValue>Tipo de contenedor</option>
-                      <option value="Orgnánico">Orgnánico</option>
-                      <option value="Inorgnánico">Inorgnánico</option>
-                      <option value="Vidrio">Vidrio</option>
-                      <option value="Cartón">Cartón</option>
-                      <option value="Papel">Papel</option>
-                      <option value="Baterías">Baterías</option>
+                      <option value="1">Orgnánico</option>
+                      <option value="2">Inorgnánico</option>
+                      <option value="3">Vidrio</option>
+                      <option value="4">Cartón</option>
+                      <option value="5">Papel</option>
+                      <option value="6">Baterías</option>
                     </select>
                   </div>
                 </div>

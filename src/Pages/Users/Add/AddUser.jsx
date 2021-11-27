@@ -106,11 +106,11 @@ export default class UserAdd extends Component{
                             <div className="col-4" style={{ paddingLeft:'2rem' }}>
                               <div className="select-group">
                                 <label htmlFor="educ">Puesto</label>
-                                <select aria-label="Default select example" name="role" id="role" value={this.state.user.type} onChange={this.handleChange}>
+                                <select aria-label="Default select example" name="role" id="role" value={this.state.user.role} onChange={this.handleChange}>
                                   <option defaultValue>Puesto</option>
-                                  <option value="Recolector">Recolector</option>
-                                  <option value="Administrativo">Administrativo</option>
-                                  <option value="Otro">Otro</option>
+                                  <option value="1">Recolector</option>
+                                  <option value="2">Administrativo</option>
+                                  <option value="3">Otro</option>
                                 </select>
                               </div>
                             </div>
@@ -119,12 +119,12 @@ export default class UserAdd extends Component{
                                 <label htmlFor="educ">Educación</label>
                                 <select aria-label="Default select example" name="educ" id="educ" value={this.state.user.educ} onChange={this.handleChange}>
                                   <option defaultValue>Educación</option>
-                                  <option value="Ninguna">Ninguna</option>
-                                  <option value="Primaria">Primaria</option>
-                                  <option value="Secundario">Secundario</option>
-                                  <option value="Bachillerato">Bachillerato</option>
-                                  <option value="Licenciatura">Licenciatura</option>
-                                  <option value="Otro">Otro</option>
+                                  <option value="1">Ninguna</option>
+                                  <option value="2">Primaria</option>
+                                  <option value="3">Secundaria</option>
+                                  <option value="4">Bachillerato</option>
+                                  <option value="5">Licenciatura</option>
+                                  <option value="6">Otro</option>
                                 </select>
                               </div>
                             </div>
