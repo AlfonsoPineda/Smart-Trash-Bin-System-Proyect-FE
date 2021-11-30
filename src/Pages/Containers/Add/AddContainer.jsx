@@ -1,9 +1,12 @@
 import { Component, useState } from "react";
+import { ValidatorForm } from "react-material-ui-form-validator";
 import { useDispatch } from "react-redux";
 import MapComponent from "../../../Components/Map/MapComponent";
 import NavBar from "../../../Components/Navbar/NavBar";
 import { changeId, changeType } from "../../../Components/Reducers/actions";
 import store  from "../../../store";
+import ContainersService from'../../../Services/Containers';
+import Swal from 'sweetalert2'
 
 
 export default function AddContainer({}){
@@ -25,6 +28,64 @@ export default function AddContainer({}){
         dispatch(changeType(container));
         setState({container: container})
       }
+
+      const usage = ()=>{
+        Swal.fire({
+          title: '¿Cómo agrego un contenedor?',
+          text: 'Para añadir un nuevo contenedor selecciona un tipo de conntenedor y rellenar el campo de "Nombre del contenedor". \n Para elegir una ubicación haz doble click sobre el mapa en la ubicación exacta donde desees tu contenedor. \n Puedes apoyarte del campo de "Buscar una localización" para obtener sugerencias de ubicaciones y cargar el mapa en la ubicación buscada. \n En caso de haber seleccionado la ubicación incorrecta haz doble click en el mapa sobre la ubicación deseada para cargar la nueva ubicación.',
+          icon: 'info',
+          confirmButtonText: 'Aceptar'
+      });
+      }
+
+      const handleSubmit = () =>{
+        console.log(container)
+        console.log(state)
+        var data = {
+            lat: state.lat,
+            lng: state.lon,
+            fulladdress: state.direction,
+            street: state.str,
+            urbanity: state.col,
+            num: state.num,
+            neighborhood: state.mun,
+            state: state.state,
+            pc: state.pc,
+            country: state.country,
+            name: container.id,
+            type: container.type,
+
+        }
+            ContainersService.addContainer(data).then(response => {
+                if(response.status === 201){
+                    Swal.fire({
+                        title: 'Contenedor agregado exitosamente',
+                        text: 'Registro exitoso',
+                        icon: 'success',
+                        confirmButtonText: 'Aceptar'
+                    });
+                    sessionStorage.clear();
+
+                    setTimeout(() => { window.location.replace('http://localhost:3000/Home')}, 2000);
+                }else if(response.status === 401){
+                    Swal.fire({
+                        title: 'Error',
+                        text: response.data.message,
+                        icon: 'error',
+                        confirmButtonText: 'Aceptar'
+                    });
+                }
+            }).catch(e => {
+                console.log(e)
+                Swal.fire({
+                    title: 'Error',
+                    text: 'ocurrió un error',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                });
+            });
+    }
+
     return(
       <div className="row" >
         <NavBar />
@@ -32,10 +93,15 @@ export default function AddContainer({}){
         <br />
         <div className="col">
           <div className="d-flex justify-content-center" style={{ paddingTop:'1rem' }} >
-            <h1>Añadir contenedor</h1>
+            <h1>Añadir contenedor  <button type="button" onClick={usage} style={{height:"30", border:'none'}}> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+</svg></button> </h1>
           </div>
           <div className="row">
             <div className="col-6">
+            <ValidatorForm onError={errors => console.log(errors)}
+                onSubmit={handleSubmit}>
               <div className="row">
                 <div className="col-6" style={{ paddingLeft:'2rem' }}>
                   <div className="select-group">
@@ -134,6 +200,7 @@ export default function AddContainer({}){
                   <button className="btn btn-primary access-btn" type="submit">Agregar contenedor</button>
                 </div>
               </div>
+            </ValidatorForm>
             </div>
             <div className="col-6"  style={{ paddingRight:'2rem', paddingTop:'2rem' }}>
               <MapComponent isAdding={true} />

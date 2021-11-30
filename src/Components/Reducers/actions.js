@@ -22,3 +22,16 @@ export const changeType = container => {
         container
     }
 }
+
+export const getCont = container => {
+    return {
+        type: 'GET_CONT',
+        container
+    }
+}
+export const getUser = container => {
+    return {
+        type: 'GET_USER',
+        container
+    }
+}

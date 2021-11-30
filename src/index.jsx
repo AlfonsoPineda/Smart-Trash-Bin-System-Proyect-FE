@@ -17,6 +17,7 @@ import NotFound from './Pages/NotFound/NotFound';
 
 import './Complements/Styles/input.scss';
 import './Complements/Styles/card.scss';
+import './Complements/Styles/text.scss';
 import './Complements/Styles/div.scss';
 import './Complements/Styles/body.scss';
 import './Complements/Styles/span.scss';

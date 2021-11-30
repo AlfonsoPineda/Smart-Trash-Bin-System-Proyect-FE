@@ -1,15 +1,45 @@
-import { Component } from "react";
+import { Component, useState } from "react";
 import NavBar from "../../../Components/Navbar/NavBar";
 import TableContainers from "../../../Components/Tables/TableContainers";
 import store from "../../../store";
+import ContainersService from'../../../Services/Containers';
+import { useDispatch } from "react-redux";
+import { getCont } from "../../../Components/Reducers/actions";
+import { render } from "@testing-library/react";
 
+const cont= store.getState().containersReducer;
 
 export default class ContainerList extends Component{
 
-  render(){
-  const state = store.getState();
-  const containers = state.containersReducer.containers;
-    console.log(containers)
+  constructor(props) {
+    super(props);
+    this.state = {
+      containers:[]
+    };
+  }
+
+  getConts = () =>{
+    let { containers } = this.state;
+
+    ContainersService.getContainers().then(response => {
+      if(response.status === 201){
+        containers= response.data.containers
+        this.setState({containers})
+        console.log(state)
+
+      }else if(response.status === 401){
+      }
+      }).catch(e => {
+
+      });
+
+      }
+
+    render(){
+      if(this.state.containers.length==0){
+        this.getConts();
+      }
+      console.log(this.state)
     return(
       <div className="row">
         <NavBar />
@@ -23,7 +53,7 @@ export default class ContainerList extends Component{
             <div className="col-2"/>
             <div className="col-8">
               <br />
-              <table class="table">
+              <table className="table">
                 <thead>
                     <tr>
                         <th>id</th>
@@ -34,7 +64,7 @@ export default class ContainerList extends Component{
                     </tr>
                 </thead>
                 <tbody>
-                  <TableContainers containers={containers} />
+                  <TableContainers containers={this.state.containers} />
                 </tbody>
               </table>
             </div>
@@ -43,5 +73,5 @@ export default class ContainerList extends Component{
         </div>
       </div>
       );
-  }
+    }
 }

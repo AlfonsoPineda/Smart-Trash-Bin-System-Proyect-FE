@@ -8,6 +8,7 @@ import Search from "../Search/Search";
 import store  from "../../store";
 import { addAddress, addCont } from "../Reducers/actions";
 import { useDispatch } from "react-redux";
+import ContainersService from'../../Services/Containers';
 
 const libraries = ["places"];
 
@@ -31,20 +32,21 @@ const center = {
   lat: direction.lat,
   lng: direction.lon,
 };
-export default function MapComponent({isAdding}) {
+export default function MapComponent({isAdding, conts}) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: key,
     libraries,
   });
 
 
-
   let [markers, setMarkers] = React.useState([]);
-  const [selected, setSelected] = React.useState(null);
+  let [selected, setSelected] = React.useState(null);
   const dispatch = useDispatch();
   markers = containers;
+
   //const unsubscribe = store.subscribe(()=> markers=containers)
   //unsubscribe()
+
 
   const onMapClick = React.useCallback((e) => {
     const getDirection = async () => {
@@ -139,13 +141,13 @@ export default function MapComponent({isAdding}) {
               <h4>
                 Contenedor: {markers.id}
               </h4>
-              <h5>Tipo de contenedor: {markers.type}</h5>
             </div>
           </InfoWindow>
         ) : null}
       </GoogleMap>
     </div>
   )
+  console.log(conts)
   return (
     <div>
       <Search panTo={panTo} />
@@ -158,13 +160,13 @@ export default function MapComponent({isAdding}) {
         options={options}
         onLoad={onMapLoad}
       >
-        {markers.containers.map((marker) => (
+        {conts.map((val, idx) => (
           <Marker
-            key={`${ marker.lat }-${ marker.lng }`}
-            position={{ lat: marker.lat, lng: marker.lng }}
+            key={conts[idx].id}
+            position={{ lat: parseFloat(conts[idx].lat), lng: parseFloat(conts[idx].lon) }}
             onClick={() =>
             {
-              setSelected(marker);
+              setSelected(conts[idx])
             }}
             icon={{
               url: `/trash.svg`,
@@ -177,14 +179,25 @@ export default function MapComponent({isAdding}) {
 
         {selected ? (
           <InfoWindow
-            position={{ lat: selected.lat, lng: selected.lng }}
+            position={{ lat: parseFloat(selected.lat), lng: parseFloat(selected.lon) }}
             onCloseClick={() =>
             {
               setSelected(null);
             }}
           >
             <div>
-
+              <h4>
+                Contenedor: #{selected.id}
+              </h4>
+              <h5>
+                Nombre: {selected.name}
+              </h5>
+              <h5>
+                Tipo: {selected.type}
+              </h5>
+              <h5>
+                Capacidad: {selected.capacity}%
+              </h5>
             </div>
           </InfoWindow>
         ) : null}

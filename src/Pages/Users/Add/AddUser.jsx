@@ -2,6 +2,7 @@ import { Component, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import NavBar from "../../../Components/Navbar/NavBar";
 import 'react-phone-input-2/lib/material.css'
+import { ValidatorForm } from 'react-material-ui-form-validator';
 
 
 export default class UserAdd extends Component{
@@ -33,12 +34,7 @@ export default class UserAdd extends Component{
   handleChange = (event) =>{
     console.log(event)
     let { user } = this.state;
-    if(event.target.id==="income"){
-      let dollarUSLocale = Intl.NumberFormat('es-MX');
-      user.income = dollarUSLocale.format( event.target.value.replace(',', ''));
-    }else{
-      user[event.target.id] = event.target.value;
-    }
+    user[event.target.id] = event.target.value;
     this.setState({ user });
     console.log(this.state.user);
   }
@@ -58,7 +54,8 @@ export default class UserAdd extends Component{
             <div className="col-10">
               <div className="card radius-card text-center">
                 <div className="card-body">
-                  <form action="">
+                  <ValidatorForm  onError={errors => console.log(errors)}
+                onSubmit={this.handleSubmit}>
                     <div className="row">
                         <div className="col-12">
                           <br />
@@ -130,7 +127,7 @@ export default class UserAdd extends Component{
                             </div>
                             <div className="col-4" style={{ paddingLeft:'2rem' }}>
                               <div className="form__group field">
-                                <input type="text"  pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" className="form__field" placeholder="income" name="income" id="income" required value={this.state.user.income} onChange={this.handleChange} />
+                                <input type="number" min="0" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" className="form__field" placeholder="income" name="income" id="income" required value={this.state.user.income} onChange={this.handleChange} />
                                 <label htmlFor="income" className="form__label">Sueldo</label>
                               </div>
                             </div>
@@ -163,7 +160,7 @@ export default class UserAdd extends Component{
                           </div>
                         </div>
                     </div>
-                  </form>
+                  </ValidatorForm>
                 </div>
               </div>
               <br />

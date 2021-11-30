@@ -4,10 +4,11 @@ return (
     props.containers.map((val, idx)=> {
         return (
             <tr >
-                <td><a href={"/Container/"+props.containers[idx].id}> {props.containers[idx].id}</a></td>
-                <td><a href={"/Container/"+props.containers[idx].id}> {props.containers[idx].name}</a></td>
-                <td><a href={"/Container/"+props.containers[idx].id}> {props.containers[idx].capacity}</a></td>
-                <td><a href={"/Container/"+props.containers[idx].id}> {props.containers[idx].direction}</a></td>
+                <td><a href={"/Container/"+props.containers[idx].id} className="dark-text"> {props.containers[idx].id}</a></td>
+                <td><a href={"/Container/"+props.containers[idx].id} className="dark-text"> {props.containers[idx].name}</a></td>
+                <td><a href={"/Container/"+props.containers[idx].id} className="dark-text"> {props.containers[idx].type}</a></td>
+                <td><a href={"/Container/"+props.containers[idx].id} className="dark-text"> {props.containers[idx].capacity}</a></td>
+                <td><a href={"/Container/"+props.containers[idx].id} className="dark-text"> {props.containers[idx].direction}</a></td>
             </tr>
             )
 
