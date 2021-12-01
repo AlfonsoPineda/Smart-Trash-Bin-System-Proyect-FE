@@ -3,7 +3,8 @@ import PhoneInput from "react-phone-input-2";
 import NavBar from "../../../Components/Navbar/NavBar";
 import 'react-phone-input-2/lib/material.css'
 import { ValidatorForm } from 'react-material-ui-form-validator';
-
+import UsersService from'../../../Services/Users'
+import Swal from 'sweetalert2'
 
 export default class UserAdd extends Component{
 
@@ -20,7 +21,7 @@ export default class UserAdd extends Component{
         role:'',
         income:'',
         bthd:'',
-        type:''
+        type:'',
       }
     };
   }
@@ -39,6 +40,50 @@ export default class UserAdd extends Component{
     console.log(this.state.user);
   }
 
+  handleSubmit= () =>{
+    var data = {
+      name:this.state.user.name,
+      lname:this.state.user.lname,
+      email:this.state.user.email,
+      phone:this.state.user.phone,
+      direc:this.state.user.direc,
+      educ:this.state.user.educ,
+      role:this.state.user.role,
+      income:this.state.user.income,
+      bthd:this.state.user.bthd,
+      type:this.state.user.type,
+      phone:this.state.user.phone,
+      petition: 'ASignup'
+  }
+    UsersService.signupUser(data).then(response => {
+      if(response.status === 201){
+          Swal.fire({
+              title: 'Usuario agregado exitosamente',
+              text: 'Registro exitoso',
+              icon: 'success',
+              confirmButtonText: 'Aceptar'
+          });
+          sessionStorage.clear();
+
+          setTimeout(() => { window.location.replace('https://4e334dc7c263.ngrok.io/Home')}, 2000);
+      }else if(response.status === 401){
+          Swal.fire({
+              title: 'Error',
+              text: response.data.message,
+              icon: 'error',
+              confirmButtonText: 'Aceptar'
+          });
+      }
+  }).catch(e => {
+      console.log(e)
+      Swal.fire({
+          title: 'Error',
+          text: 'ocurrió un error',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+      });
+  });
+  }
   render(){
     return(
       <div className="row">
@@ -138,8 +183,8 @@ export default class UserAdd extends Component{
                                 <label htmlFor="educ">Tipo de usuario</label>
                                 <select aria-label="Default select example" name="type" id="type" value={this.state.user.type} onChange={this.handleChange}>
                                   <option defaultValue>Tipo de usuario</option>
-                                  <option value="Admin">Administrador</option>
-                                  <option value="Common">Común</option>
+                                  <option value="1">Administrador</option>
+                                  <option value="2">Común</option>
                                 </select>
                               </div>
                             </div>

@@ -9,6 +9,12 @@ class ContainersService {
     getContainers() {
         return http.get(`/Containers`);
     }
+    getContainer(data) {
+        return http.post(`/Container`, data);
+    }
+    updateContainer() {
+        return http.post(`/Container`);
+    }
 
 }
 

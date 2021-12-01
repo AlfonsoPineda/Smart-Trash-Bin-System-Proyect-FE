@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import NavBar from '../../Components/Navbar/NavBar';
+import UsersService from'../../Services/Users'
+import Swal from 'sweetalert2'
 
 import './Signup.scss';
 
@@ -21,12 +23,48 @@ class Signup extends Component {
     this.setState({ user });
     console.log(this.state.user);
   }
+  handleSubmit= () =>{
+    var data = {
+      email:this.state.user.email,
+      password:this.state.user.password,
+      petition: 'USignup'
+  }
+    if(this.state.user.password ==this.state.user.passwordconf){
+      UsersService.signupUser(data).then(response => {
+        if(response.status === 201){
+            Swal.fire({
+                title: 'Usuario registrado exitosamente',
+                text: 'Registro exitoso',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            });
+
+            setTimeout(() => { window.location.replace('https://4e334dc7c263.ngrok.io/')}, 2000);
+        }else if(response.status === 401){
+            Swal.fire({
+                title: 'Error',
+                text: response.data.message,
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            });
+        }
+      }).catch(e => {
+          console.log(e)
+          Swal.fire({
+              title: 'Error',
+              text: 'ocurrió un error',
+              icon: 'error',
+              confirmButtonText: 'Aceptar'
+          });
+      });
+    }
+  }
   render() {
     const mytoken = localStorage.getItem('token');
     if(mytoken === undefined || mytoken === null){
         //pass
     }else{
-        window.location.replace('http://localhost:3000/Home')
+        window.location.replace('https://4e334dc7c263.ngrok.io/Home')
     }
     return (
       <div>

@@ -62,7 +62,7 @@ class Login extends Component {
     if(mytoken === undefined || mytoken === null){
         //pass
     }else{
-        window.location.replace('http://localhost:3000/Home')
+        window.location.replace('https://4e334dc7c263.ngrok.io/Home')
     }
     return (
       <div>
@@ -97,7 +97,6 @@ class Login extends Component {
                 <a href="/signup" className="btn signup-red-btn">Crear cuenta</a>
                 <br />
                 <br />
-                <a href="/passwordForgot" className="password-forgot">Olvidé mi contraseña</a>
               </ValidatorForm>
             </div>
           </div>

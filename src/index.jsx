@@ -29,6 +29,7 @@ import ContainerList from './Pages/Containers/List/ContainerList';
 import UserList from './Pages/Users/List/UserList';
 import UserAdd from './Pages/Users/Add/AddUser';
 import MapPage from './Pages/Map/Mappage';
+import Profile from './Pages/Users/Profile/Profile';
 
 
 function App() {
@@ -43,7 +44,9 @@ function App() {
           <Route exact path="/AddContainer" component={AddContainer} />
           <Route exact path="/ListContainers" component={ContainerList} />
           <Route exact path="/ListUsers" component={UserList} />
+          <Route exact path="/User" component={UserList} />
           <Route exact path="/AddUser" component={UserAdd} />
+          <Route exact path="/Profile" component={Profile} />
           <Route component={NotFound} />
         </Switch>
       </Router>
